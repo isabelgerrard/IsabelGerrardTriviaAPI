@@ -1,0 +1,57 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Free Choice API: Trivia</title>
+</head>
+
+<h1>Create Your Own Trivia Quiz!!</h1>
+<body>
+<div id="content">
+    <input id="numQuestionsInput" placeholder="# of Questions (max 50)" value=25>
+    <select id="categoryChosen">
+        <option value="selectCategory">Pick a Category</option>
+        <option value="">All Categories</option>
+        <option value="9">General Knowledge</option>
+        <option value="17">Science and Nature</option>
+        <option value="20">Mythology</option>
+        <option value="21">Sports</option>
+        <option value="22">Geography</option>
+        <option value="23">History</option>
+        <option value="24">Politics</option>
+        <option value="25">Art</option>
+        <option value="26">Celebrities</option>
+        <option value="27">Animals</option>
+        <option value="28">Vehicles</option>
+        <option value="11">Entertainment: Film</option>
+        <option value="12">Entertainment: Music</option>
+        <option value="14">Entertainment: Television</option>
+        <option value="32">Entertainment: Cartoon and Animations</option>
+    </select>
+    <select id="difChosen">
+        <option value="selectDifficulty">Choose your Difficulty</option>
+        <option value="">Any Difficulty</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+    </select>
+    <select id="typeChosen">
+        <option value="selectType">Pick a Question Type</option>
+        <option value="">All Types</option>
+        <option value="multiple">Multiple Choice</option>
+        <option value="boolean">True / False</option>
+    </select>
+    <button id="randomButton">Random!!</button>
+    <br><br>
+    <button id="createQuizButton">Generate Trivia</button>
+    <br><br>
+    <div id="resultTable"></div>
+    <br><br>
+    <div id="error"></div>
+    <button id="finishQuizButton">Finish and Grade!</button>
+
+</div>
+</body>
+</html>
