@@ -1,21 +1,74 @@
-#error {
-    background-color: darkorchid;
-    color: white;
+
+h1 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-weight: bold;
+    font-size: 70px;
+    -webkit-text-stroke-color: #000000;
+    -webkit-text-stroke-width: 2px;
+    font-family: "American Typewriter";
+}
+body {
+    background-color: lightcoral;
+    text-align: center;
+    margin: auto;
+    position:relative;
+}
+
+#resultTable, #answersTable {
+    margin: auto;
+    position:relative;
+    background-color: pink;
+}
+#resultTable {
+    width: 55%;
+    text-align: left;
+}
+
+#answersTable {
+    width: 10%;
+    display: none;
+    text-align: center;
+    font-size: 20px;
+}
+
+#answersShown {
     text-align: center;
 }
 
-#error {
-    font-size: 50px;
+
+/*selectboxes*/
+#difChosen, #typeChosen, #numQuestionsInput, #categoryChosen {
+    text-align: center;
+    background-color: white;
+}
+
+#createQuizButton {
+    background-color: white;
     font-family: "American Typewriter";
+    font-size: 25px;
+}
+
+#randombutton, #finishQuizButton {
+    background-color: white;
+    font-family: "American Typewriter";
+    text-align: center;
 }
 
 #finishQuizButton {
     display: none;
-}
-
-#resultTable {
-    width: 55%;
     margin: auto;
     position:relative;
-    text-align: left;
+    font-size: 15px;
 }
+
+#error {
+    display: block;
+    background-color: black;
+    font-size: 25;
+    font-family: "American Typewriter";
+    color: red;
+    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 0.25px;
+}
+

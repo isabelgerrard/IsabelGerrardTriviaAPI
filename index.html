@@ -4,19 +4,18 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css"/>
-    <title>Free Choice API: Trivia</title>
+    <title>Make Your Own Trivia!!</title>
 </head>
 
-<h1>Create Your Own Trivia Quiz!!</h1>
+<h1>Create and Play Your Own Trivia Quiz!!</h1>
 <body>
 <div id="content">
-    <input id="numQuestionsInput" placeholder="# of Questions (max 50)" value=25>
+    <input id="numQuestionsInput" placeholder="# of Questions (max 50)" value=20>
     <select id="categoryChosen">
         <option value="selectCategory">Pick a Category</option>
         <option value="">All Categories</option>
         <option value="9">General Knowledge</option>
         <option value="17">Science and Nature</option>
-        <option value="20">Mythology</option>
         <option value="21">Sports</option>
         <option value="22">Geography</option>
         <option value="23">History</option>
@@ -43,14 +42,22 @@
         <option value="multiple">Multiple Choice</option>
         <option value="boolean">True / False</option>
     </select>
-    <button id="randomButton">Random!!</button>
+    <button id="randomButton">or... Random!</button>
     <br><br>
     <button id="createQuizButton">Generate Trivia</button>
     <br><br>
+    <div id="error"></div>
     <div id="resultTable"></div>
     <br><br>
-    <div id="error"></div>
     <button id="finishQuizButton">Finish and Grade!</button>
+    <br><br>
+    <div id="answersTable"></div>
+    <br><br>
+    <br><br>
+    <div id="error2"></div>
+    <br><br>
+    <br><br>
+    <br><br>
 
 </div>
 </body>
