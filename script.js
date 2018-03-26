@@ -1,7 +1,9 @@
 $(document).ready(function() {
+
     var difArray = ["easy", "medium", "hard"];
     var typeArray = ["multiple", "boolean"];
     var catArray = ["9", "17" , "21", "11", "12", "14", "31", "22", "23", "24", "25", "26", "27", "28"];
+
 
     $('#randomButton').on('click', function() {
         var randomIndex1 = Math.floor(Math.random() * 14);
@@ -14,7 +16,6 @@ $(document).ready(function() {
 
 
     $('#createQuizButton').on('click', function () {
-
         var numQuestions = document.getElementById("numQuestionsInput").value;
         console.log(numQuestions);
         var categoryChosen = document.getElementById("categoryChosen").value;
@@ -53,7 +54,7 @@ function myFunction(r, num, category, difficulty, type) {
     if (num <= 50 && num > 0 && category != "selectCategory" && difficulty != "selectDifficulty" && type != "selectType") {
         var result = "<table id='triviaShown' cellpadding=10>";
         for (var i = 0; i < triviaArray.length; i++) {
-            result += "<tr><td>" + (i+1) + ")   " + triviaArray[i].question + "</td></tr>";
+            result += "<tr><td>" + (i+1) + ")" + triviaArray[i].question + "</td></tr>";
             var questionsAnswersArray = randomizeAnswers(triviaArray[i].incorrect_answers, triviaArray[i].correct_answer);
 
             for(var j = 0; j < questionsAnswersArray.length; j++){
@@ -63,11 +64,22 @@ function myFunction(r, num, category, difficulty, type) {
             result += "<tr><td><br><br></td></tr>";
 
         }
-        result += "</table>"
-        document.getElementById("resultTable").innerHTML = result;
-        document.getElementById("resultTable").style.display = "block";
-        document.getElementById("error").style.display = "none";
-        document.getElementById("finishQuizButton").style.display = "block";
+        result += "</table>";
+        console.log(result);
+        if(result == "<table id='triviaShown' cellpadding=10></table>"){
+            document.getElementById("noTableError").style.display = "block";
+            document.getElementById("noTableError").innerHTML = "ERROR. There is not enough trivia data available to create a quiz with those selections. Please change selections. Click here to exit.";
+            $("#noTableError").click(function(){
+                $("#noTableError").hide('fast');
+            });
+        } else {
+            document.getElementById("resultTable").innerHTML = result;
+            document.getElementById("resultTable").style.display = "block";
+            document.getElementById("error").style.display = "none";
+            document.getElementById("noTableError").style.display = "none";
+            document.getElementById("answersError").style.display = "none";
+            document.getElementById("finishQuizButton").style.display = "block";
+        }
 
     } else {
         document.getElementById("resultTable").style.display = "none";
@@ -75,10 +87,6 @@ function myFunction(r, num, category, difficulty, type) {
         $("#error").click(function(){
             $("#error").hide('fast');
         });
-        $("#createQuizButton").click(function(){
-            $("#error").show('fast');
-        });
-
         document.getElementById("finishQuizButton").style.display = "none";
     }
 }
@@ -123,10 +131,10 @@ function gradeQuiz(rObject){
         var AN = document.getElementsByName(answerName);
         console.log(AN);
 
-        //Finds the selected answer
+
         for (var j = 0; j < AN.length; j++) {
-            // var CA = "";
             if (AN[j].checked == true) {
+                //Finds the selected answer
                 console.log(AN[j]);
                 console.log(AN[j].id);
                 var answer = AN[j].id;
@@ -147,18 +155,36 @@ function gradeQuiz(rObject){
                 }
             }
         }
-
     }
 
-    var answers = "<table id='answersShown' cellpadding=10>";
-    answers += "<tr><td><br><br></td></tr>";
+    var answers = "<table id='answersShown' cellpadding='10'>";
 
-    for(var i = 0; i < answersArray.length; i ++){
-        answers += "<tr><td>" + "Question " + (i+1) + ": " + answersArray[i] + "</td></tr>";
-        answers += "<tr><td><br><br></td></tr>";
+    console.log(answersArray.length);
+    console.log(document.getElementById("numQuestionsInput").value);
+    if(answersArray.length == document.getElementById("numQuestionsInput").value){
+        answers += "<tr>";
+            for(var i = 0; i < answersArray.length; i ++){
+            answers += "<td>" + "Question " + (i+1) + ": " + "<br>" + answersArray[i] + "</td>";
+            // answers += "<tr><td><br><br></td></tr>";
+        }
+        answers+= "</tr>";
+        document.getElementById("answersTable").innerHTML = answers;
+        document.getElementById("answersTable").style.display = "block";
+        document.getElementById("finishQuizButton").style.display = "block";
+        document.getElementById("answersError").style.display = "none";
+        document.getElementById("startOverButton").style.display = "block";
+        $("#startOverButton").click(function(){
+            $("#finishQuizButton").hide('fast');
+            $("#answersTable").hide('fast');
+            $("#resultTable").hide('fast');
+            $("#startOverButton").hide('fast');
+        });
+    } else {
+        document.getElementById("answersError").innerHTML = "ERROR. Please answer all questions to finish quiz. Click here to exit.";
+        document.getElementById("answersError").style.display = "block";
+        $("#answersError").click(function(){
+            $("#answersError").hide('fast');
+        });
     }
 
-    document.getElementById("answersTable").innerHTML = answers;
-    document.getElementById("answersTable").style.display = "block";
-    document.getElementById("finishQuizButton").style.display = "block";
 }
